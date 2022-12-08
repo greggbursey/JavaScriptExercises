@@ -10,6 +10,10 @@
    e. c & b
 2. List out some of the most common usages of an array.
 
+## Note
+
+Use the `Arrays.js` file in this directory to do exercises.
+
 ## Isolated Exercises
 
 ### Basic
@@ -120,7 +124,7 @@ const cars = [
 ## Big-Picture Exercises - POWER RANGERS
 
 ```js
-const colors = {
+const colors = [
     Red: {
         color: "Red",
         attributes: ["leader", "strength", "fighting", "adventurous"],
@@ -173,7 +177,13 @@ const colors = {
         color: "Purple",
         attributes: ["supporting", "funny", "protect"],
     },
-};
+];
 ```
 
-Create a simple html page in this folder.
+Using the `colors` array above - and using the `index.html` file in this directory, do the following:
+
+1. Create a `<select>` dropdown with each choice as an `<option>`
+    - NOTE: it's ok if you have to manually enter each option in the HTML - we are not using a UI framework or library here to manipulate the DOM - the goal is to focus on raw javascript.
+2. When you select an option, display it's `color` property in an `<h3>` tag.
+3. When you select an option, display it's `attributes` properties in an unordered list on the page.
+4. BONUS: create a filter on the page that allows you to filter by Power Rangers who have the "Leader" attribute.
