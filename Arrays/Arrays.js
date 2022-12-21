@@ -120,7 +120,7 @@ const cars = [
     trim: "base",
     mileage: 150_000,
     driveTrain: 2,
-    features: ["power windows"],
+    features: ["power, windows"],
     horsePower: 140,
   },
 ];
@@ -135,18 +135,53 @@ cars.map(
     make: "Ferrari",
     model: "812 Superfast",
     trim: undefined,
-    driveTrain: 3,
-    horsepower: 789,
+    mileage: 4,
+    driveTrain: 4,
+    horsePower: 789,
+    features: ["leather", "nightvision", "KITT A.I", "Coffee dispenser"],
   })
 );
-console.log(newCarsArr);
+console.log(newCarsArr.map((car) => console.log(car.features)));
 // 2. Using the `.reduce` method on the Array prototype, log out the total `horsePower` on all cars.
+const total = newCarsArr.reduce(function (accumulator, currentVal) {
+  return accumulator + currentVal.horsePower;
+}, 0);
+console.log(total);
 // 3. Using the `.some` method on the Array prototype:
+
 // - log out whether some `cars` have more than one hundred thousand miles.
-// - log out whether some `cars` have four wheel drive
-// - log out whether some `cars` have more than 4 features
-// - log out whether some `cars` are made by Tesla
+newCarsArr.some((x) => console.log(x.mileage > 100000));
+// a little fancier for clarity
+newCarsArr.some((x) =>
+  console.log(
+    `The mileage of the ${x.make} ${x.model} is ${x.mileage} and is `,
+    x.mileage > 100000
+  )
+);
+newCarsArr.some((car) => {
+  // - log out whether some `cars` have four wheel drive
+  console.log(
+    `${car.make} driveTrain is ${car.driveTrain},  ${car.driveTrain == 4}`
+  );
+  // - log out whether some `cars` have more than 4 features
+  console.log(`Car: ${car.make} is `, car.features.length >= 4);
+  // - log out whether some `cars` are made by Tesla
+  console.log(
+    `Car made by Tesla? ${car.make} ${car.model}:`,
+    car.make === "Tesla"
+  );
+});
+
 // 4. Using the `.every` method on the Array prototype:
 // - log out whether every car has a `trim` specified
+newCarsArr.every((car) => console.log(car.trim === true));
 // - log out whether every car has at least 1 feature
+newCarsArr.every((car) => console.log(car.features.length >= 1));
+
 // - if every car has more than 5 miles, log out "Every car has been driven", otherwise log out "They're all new"
+const carMileage = newCarsArr.every((car) => car.mileage);
+if (carMileage <= 5) {
+  console.log("They're all new");
+} else if (carMileage > 5) {
+  console.log("Every car has been driven");
+}
