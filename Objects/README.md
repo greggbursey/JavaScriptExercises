@@ -58,10 +58,11 @@ const computer = {
         return this;
     },
     whatIsThis: this,
-    // Getters
+    // Getter
     get getUserName() {
         return "Nick";
     },
+    // Setter
     set setPassword(value) {
         this.password = value;
     },
